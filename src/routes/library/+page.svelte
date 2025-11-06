@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
     import * as DropdownMenu from "$lib/components/ui/dropdown-menu/index.js";
-	import { ChevronDown } from '@lucide/svelte';
+	import { ChevronDown, ExternalLink } from '@lucide/svelte';
 
 
  let {data} = $props();
@@ -81,18 +81,33 @@
 
 </script>
 <svelte:head>
-  <title>Library</title>
-  <meta name="description" content="Library of PDFs" />
-  </svelte:head>
+	<title>Library</title>
+	<meta name="description" content="Lovely Plus Beauty College Library" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="Lovely Plus Beauty College Library" />
+	<meta property="og:description" content="Lovely Plus Beauty College Library" />
+	<meta property="og:image" content="/logopng.png" />
+	<meta property="og:image:alt" content="Lovely Plus Beauty College logo" />
+	<meta property="og:url" content="/" />
+	<meta property="og:site_name" content="Lovely Plus Beauty College" />
 
-  <div class="grid lg:grid-cols-3 grid-col-1 justify-center sticky top-4 right-4 w-full justify-self-center gap-4 py-8">
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Lovely Plus Beauty College Library" />
+	<meta name="twitter:description" content="Lovely Plus Beauty College Library" />
+	<meta name="twitter:image" content="/logopng.png" />
+	<meta name="twitter:image:alt" content="Lovely Plus Beauty College logo" />
+
+	<meta name="theme-color" content="#f472b6" />
+</svelte:head>
+
+  <div class="grid lg:grid-cols-3 grid-col-1 justify-center sticky top-4 right-4 w-full justify-self-center gap-4 py-8 px-4">
 <input 
     type="search" 
     bind:value={searchQuery} 
     oninput={() => filterHelps(searchQuery)} 
     placeholder="Search help..." 
     class="shadow-md border border-dark/20 rounded-lg bg-white z-10 
-    p-2 w-sm m-4 focus:border-white focus:ring-1 
+    p-2 lg:w-sm max-w-sm m-4 focus:border-white focus:ring-1 
     focus:ring-pink/50 focus:shadow-pink/30 focus:outline-none
      transition-all duration-300 ease-in-out justify-self-end"
 />
@@ -168,12 +183,12 @@
       <div class="p-4">
         <a
           href={"/library/" + pdf?.id}
-          class="bg-radial-to-r from-pink-400 via-pink-500 to-pink-600 text-white font-extrabold rounded-md px-4 py-2 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition inline-flex items-center gap-3 truncate"
+          class="bg-radial-to-r from-pink-400 via-pink-500 to-pink-600 text-black  font-extrabold rounded-md px-4 py-2 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition inline-flex items-center gap-3 truncate"
           aria-label={"Open " + (pdf?.title || "PDF")}
         >
           <span class="text-xl">💖</span>
-          <span class="text-lg truncate">Title: {pdf.title}</span>
-          <span class="ml-auto text-sm opacity-90">↗</span>
+          <span class="text-lg wrap-break-words text-balance whitespace-normal">Title: {pdf.title}</span>
+          <ExternalLink class="w-8 h-8" />  
         </a>
 
         <div class="mt-3 flex flex-wrap gap-2">
